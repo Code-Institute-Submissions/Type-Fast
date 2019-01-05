@@ -13,14 +13,53 @@
     <!--Styles-->
     <link rel="stylesheet" href="assets/styles/main.css" type="text/css">
 
-    <title>Type Fast | Test you typing skills!</title>
+    <title>Type Fast | Test your typing skills!</title>
 </head>
     <body>
         <header>
-
+            <h1 class="type-fast-header center-content">Type Fast</h1>
         </header>
 
         <main class="container">
+            <!--Instructions Modal, by Bootstrap, which will open automatically on visiting the site-->
+            <div class="modal fade" id="game-instructions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">How to Play</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Welcome to Type Fast!
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Stie Content-->
+            <p>Type the word below as fast as you can!</p>
+            <p>Don't let the timer run out!</p>
+
+            <!--Seconds and Score-->
+            <p>Seconds: <span id="timer-sec"></span></p>
+            <p>Score: <span id="score"></span></p>
+            
+            <!--Display Word to User-->
+            <span id="word-display">When start is clicked, the word will appear here.</span>
+
+            <!--Input for user-->
+            <input type="text" id="user-typing" class="form-control" placeholder="Type in here!">
+
+            <!--Buttons for user to manage game-->
+            <button id="start-game">Start</button>
+            <button id="reset-game">Reset</button>
 
         </main>
 
