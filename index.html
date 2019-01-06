@@ -17,7 +17,7 @@
 </head>
     <body>
         <header>
-            <h1 class="type-fast-header center-content">Type Fast</h1>
+            <h1 class="type-fast-header center-content">Type Fast <span class="cursor-line"></span></h1>
         </header>
 
         <main class="container">
@@ -43,24 +43,34 @@
                 </div>
             </div>
 
-            <!--Stie Content-->
-            <p>Type the word below as fast as you can!</p>
-            <p>Don't let the timer run out!</p>
+            <div class="game-content">
+                <!--Stie Content-->
+                <div class="game-info center-content">
+                    <h2>Type the word below as fast as you can!</h2>
+                    <p>Don't let the timer run out!</p>
+                </div>
 
-            <!--Seconds and Score-->
-            <p>Seconds: <span id="timer-sec"></span></p>
-            <p>Score: <span id="score"></span></p>
-            
-            <!--Display Word to User-->
-            <span id="word-display">When start is clicked, the word will appear here.</span>
+                <!--Seconds and Score-->
+                <div class="center-content user-score-timer">
+                    <p class="inline-block timer-count">Seconds: <span id="timer-sec">0</span></p>
+                    <p class="inline-block user-score">Score: <span id="score">0</span></p>
+                </div>
 
-            <!--Input for user-->
-            <input type="text" id="user-typing" class="form-control" placeholder="Type in here!">
+                <!--Display Word to User-->
+                <div class="word-display center-content">
+                    <span id="word-display">When start is clicked, the word will appear here.</span>
+                </div>
 
-            <!--Buttons for user to manage game-->
-            <button id="start-game">Start</button>
-            <button id="reset-game">Reset</button>
-
+                <!--Input for user-->
+                <div class="user-input center-content">            
+                    <input type="text" id="user-input" placeholder="Type in here!">
+                </div>
+                <!--Buttons for user to manage game-->
+                <div class="user-settings center-content">
+                    <a id="start-game">Start</a>
+                    <a id="reset-game">Reset</a>
+                </div>
+            </div>
         </main>
 
         <footer>

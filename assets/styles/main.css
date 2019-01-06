@@ -1,0 +1,119 @@
+/*Reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*Fonts*/
+
+@font-face {
+    font-family: 'Typist';
+    font-style: normal;
+    src: url(../fonts/Typist.ttf);
+}
+
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    src: url(../fonts/Oswald-Regular.ttf);
+}
+
+
+/*Presets*/
+
+.inline-block {
+    display: inline-block
+}
+
+.center-content {
+    text-align: center;
+}
+
+/*Header*/
+
+.type-fast-header {
+    font-family: 'Typist', sans-serif;
+}
+
+.cursor-line {
+    border: 1px #000 solid;
+    width: 1px;
+    margin: 10px;
+}
+
+/*Modal - Instructions*/
+
+
+/*Main Page*/
+
+.game-info h2 {
+    margin: 25px 0 0 0;
+}
+
+.game-info h2, p, .word-display span {
+    font-family: "Oswald", sans-serif;
+    color: #fff;
+}
+
+.game-info p {
+    font-size: 15pt;
+    color: #fff;
+}
+
+.user-score-timer {
+    margin: 25px;
+}
+
+.user-score-timer p, span {
+    font-size: 16pt;
+}
+
+input[type=text] {
+    padding: 10px;
+    border: 1px #b1b1b1 solid;
+    border-radius: 10px;
+    margin: 25px;
+}
+
+.user-settings {
+    margin-top: 25px;
+}
+
+.user-settings a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+    font-family: "Oswald", sans-serif;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    padding: 5px 15px;
+    font-size: 14pt;
+    transition: all 0.2s ease-in-out 0.2s;
+    -moz-transition: all 0.2s ease-in-out 0.2s;
+    -webkit-transition: all 0.2s ease-in-out 0.2s;
+    -o-transition: all 0.2s ease-in-out 0.2s;
+}
+
+.user-settings a:hover {
+    color: rgb(156, 156, 156);
+    border: 2px solid rgb(156, 156, 156);
+}
+
+
+#reset-game {
+    display: none;
+}
+
+/*Background Colors*/
+
+header {
+    background-color: #fff;
+    padding: 20px
+}
+
+body {
+    background-color:rgb(83, 83, 83);
+}
+
+
+/**/
