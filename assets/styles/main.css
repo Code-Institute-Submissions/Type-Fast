@@ -68,6 +68,10 @@
     font-size: 16pt;
 }
 
+.timer-count, .user-score {
+    margin: 0 20px;
+}
+
 input[type=text] {
     padding: 10px;
     border: 1px #b1b1b1 solid;
