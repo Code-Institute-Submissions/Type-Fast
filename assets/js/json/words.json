@@ -1,0 +1,13 @@
+{
+    "easy": {
+        "words":["from", "this", "game" ]
+    },
+
+    "moderate": {
+        "words": ["mercedes", "warfare"]
+    },
+    
+    "hard": {
+        "words": ["interactive", "battlefield"]
+    }
+}
