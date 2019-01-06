@@ -60,11 +60,20 @@
     color: #fff;
 }
 
+.difficulty {
+    margin: 10px; 
+    cursor: pointer
+}
+
+.difficulty p, .difficulty p span {
+    font-size: 14pt; 
+}
+
 .user-score-timer {
     margin: 25px;
 }
 
-.user-score-timer p, span {
+.user-score-timer p, .user-score-timer p span {
     font-size: 16pt;
 }
 
