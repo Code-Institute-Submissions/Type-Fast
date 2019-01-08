@@ -1,12 +1,13 @@
 const reset = $('#reset-game');
 const start = $('#start-game');
-const instructions = $('#game-instructions');
+const instructionsModal = $('#game-instructions');
 const difficulty = $('.difficulty');
 const difficultyChanger = $('#difficulty-changer');
 const displayChoice = $('#word-display');
 const userInput = $('#user-input');
 const userScore = $('#score');
 const timer = $('#timer-sec');
+const gameoverModal
 
 
 var game_difficultly = 0;
@@ -17,9 +18,9 @@ var displayWords = [];
 
 $(document).ready(function(){
     obtainWords();
-    gameTimer();
+    //gameTimer();
     // On load open instructions modal
-    //instructions.modal('show');
+    //instructionsModal.modal('show');
     
     //Change Difficultly
     difficulty.on('click', function(){
@@ -40,7 +41,9 @@ $(document).ready(function(){
         //Displays Reset button as game has started
         start.css('display', 'none');
         reset.css('display','initial');
-
+        setTimeout(function(){
+            gameTimer();
+        }, 1000);
         game();
 
     });
@@ -70,8 +73,6 @@ function obtainWords(){
             displayWords.push(val);
             
         });
-
-        console.log(displayWords);
     });
 }
 
@@ -86,13 +87,15 @@ function showWord() {
 
 function game() {
     showWord();
+    gameTimer();
+    
     userInput.on('input', function () {
         if (wordsMatch()) {
             userScore.html(score);
             userInput.val("");
             showWord();
         } else {
-            reset.css('background-color', 'red')
+            
         }
     });
     
@@ -118,8 +121,17 @@ function gameTimer() {
     setInterval(function(){
         t--;
         timer.html(t);
+        if (t === 0 ) {
+            
+        };
     }, 1000)
 }
 
 //Status 
-
+function gameStatus() {
+    setInterval(function(){
+        if (t === 0 && userInput.val() === displayChoice.html()) {
+            
+        }
+    }, 100)
+}
