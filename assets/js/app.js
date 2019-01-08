@@ -18,7 +18,6 @@ var displayWords = [];
 
 $(document).ready(function(){
     obtainWords();
-    //gameTimer();
     // On load open instructions modal
     //instructionsModal.modal('show');
     
@@ -42,8 +41,8 @@ $(document).ready(function(){
         start.css('display', 'none');
         reset.css('display','initial');
         setTimeout(function(){
-            gameTimer();
             game();
+            gameTimer();
             gameStatus();
         }, 1000)
         
@@ -63,11 +62,9 @@ $(document).ready(function(){
     
 });
 
-//Game
 
+//Get words from JSON file
 function obtainWords(){
-
-
     $.getJSON("assets/js/json/words.json", function(data){
         
         $.each(data, function(diff, val){
@@ -77,6 +74,7 @@ function obtainWords(){
     });
 }
 
+//Show word from JSON 
 function showWord() {
     //Random Number
     i = Math.floor(Math.random() * 2);
@@ -86,6 +84,7 @@ function showWord() {
 
 }
 
+//Game
 function game() {
     showWord();
     gameTimer();
@@ -97,17 +96,24 @@ function game() {
             showWord();
         } else {
             
-        }
+           if (userInput.val().length === displayChoice.html().length) {
+            userInput.val("");
+            } 
+        } 
+        
+        
     });
     
 
 }
 
+//Check if the words match
 function wordsMatch(){
     //Sees if that input is a match
     if (userInput.val() === displayChoice.html()) {
         //green fade out
         score++;
+        gameTimer();
         return true;
     } else {
         // wiggle red fade out
@@ -135,13 +141,25 @@ function gameStatus() {
         if (t === 0 && userInput.val() !== displayChoice.html()) {
             clearInterval(status); 
             setTimeout(function(){
-                //shows game over modal 
-                gameoverModal.modal('show');
-                gameoverScore.val(score);
+                endGame();
             }, 750);
             
         } 
-    }, 100);
+    }, 100);    
+}
 
-    
+//Game Ends 
+function endGame() {
+    //shows game over modal 
+    gameoverModal.modal('show');
+    gameoverScore.html(score);
+
+    gameoverModal.on('hidden.bs.modal', function(){
+        start.css('display', 'initial');
+        reset.css('display','none');
+        displayChoice.html('When start is clicked, the word will appear here.');
+        score = 0;
+        userScore.html(score);
+        userInput.val("");
+    });
 }
