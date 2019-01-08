@@ -7,8 +7,8 @@ const displayChoice = $('#word-display');
 const userInput = $('#user-input');
 const userScore = $('#score');
 const timer = $('#timer-sec');
-const gameoverModal
-
+const gameoverModal = $('#game-over');
+const gameoverScore = $('#game-over-score');
 
 var game_difficultly = 0;
 var score = 0;
@@ -43,9 +43,10 @@ $(document).ready(function(){
         reset.css('display','initial');
         setTimeout(function(){
             gameTimer();
-        }, 1000);
-        game();
-
+            game();
+            gameStatus();
+        }, 1000)
+        
     });
 
 
@@ -107,31 +108,40 @@ function wordsMatch(){
     if (userInput.val() === displayChoice.html()) {
         //green fade out
         score++;
-        return true
+        return true;
     } else {
         // wiggle red fade out
         return false;
-    };
+    }
 }
-//Timer
 
+//Timer
 function gameTimer() {
     t = 5;
 
-    setInterval(function(){
-        t--;
+    var interval = setInterval(function(){
         timer.html(t);
         if (t === 0 ) {
-            
-        };
-    }, 1000)
+            clearInterval(interval);
+        } else {
+            t--;
+        }
+    }, 1000);
 }
 
 //Status 
 function gameStatus() {
-    setInterval(function(){
-        if (t === 0 && userInput.val() === displayChoice.html()) {
+    var status = setInterval(function(){
+        if (t === 0 && userInput.val() !== displayChoice.html()) {
+            clearInterval(status); 
+            setTimeout(function(){
+                //shows game over modal 
+                gameoverModal.modal('show');
+                gameoverScore.val(score);
+            }, 750);
             
-        }
-    }, 100)
+        } 
+    }, 100);
+
+    
 }
