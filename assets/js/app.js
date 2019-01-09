@@ -9,6 +9,7 @@ const userScore = $('#score');
 const timer = $('#timer-sec');
 const gameoverModal = $('#game-over');
 const gameoverScore = $('#game-over-score');
+const gameoverDiff = $('#game-over-diff');
 
 var game_difficultly = 0;
 var score = 0;
@@ -95,7 +96,7 @@ function game() {
             userInput.val("");
             showWord();
         } else {
-            
+
            if (userInput.val().length === displayChoice.html().length) {
             userInput.val("");
             } 
@@ -153,6 +154,7 @@ function endGame() {
     //shows game over modal 
     gameoverModal.modal('show');
     gameoverScore.html(score);
+    gameoverDiff.html(difficultyChanger.html());
 
     gameoverModal.on('hidden.bs.modal', function(){
         start.css('display', 'initial');
