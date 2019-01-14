@@ -15,6 +15,7 @@ const username = $('#username');
 
 var game_difficultly = 9;
 var score = 102;
+var position = "10";
 
 var displayWords = [];
 
@@ -45,7 +46,7 @@ $(document).ready(function(){
             game();
             gameTimer();
             gameStatus();
-        }, 1000)
+        }, 1000);
         
     });   
 
@@ -57,7 +58,7 @@ $(document).ready(function(){
             saveLeaderboard(username.val());
         }
         
-    })
+    });
 
 
     
@@ -150,15 +151,7 @@ function gameStatus() {
 function endGame() {
     //Show Leaderboard
     showLeaderboard();
-    var leaderboardLength = (leaderboard.position.length) - 1;
-    //Should users score be saved
-    if (score > leaderboard.score[leaderboardLength]) {
-        inputUserScore.css('display', 'initial');
-        console.log("User score (" + score + ") is higher than last score in Array (" + leaderboard.score[leaderboardLength]+ "). It can be inputted!");
-    } else {
-        console.log("Score hasn't reached the leaderboard status, bah humbug!");
-        console.log();
-    }
+    
     //shows game over modal 
     gameoverModal.modal('show');
     gameoverScore.html(score);
@@ -176,10 +169,9 @@ function endGame() {
 }
 
 function saveLeaderboard(username) {
-    //position = ["1", "2"];
     diff = difficultyChanger.html();
 
-    details = {position, usernameinput, score};
+    details = {position, username, score};
 
     window.localStorage.setItem(diff, JSON.stringify(details));
 
@@ -187,18 +179,58 @@ function saveLeaderboard(username) {
 }
 
 function showLeaderboard() {
-
+    
     getDiffBoard = difficultyChanger.html();
 
-    leaderboard = JSON.parse(window.localStorage.getItem(getDiffBoard));
+    if (window.localStorage.getItem(getDiffBoard) === null) {
+        $('.leaderboard > table').css('display', 'none');
+        
+        var noLeaderboard = `<h4>Oh, theres no leaderboard! Play and you'll be in first :D</h4>`;
 
-    for (i = 0; i < leaderboard.position.length; i++) {
-        var tableRow = `<tr>
-            <td>${leaderboard.position[i]}</td>
-            <td>${leaderboard.usernameinput[i]}</td>
-            <td>${leaderboard.score[i]}</td>
-        </tr>`;
-        $('.leaderboard > table').append(tableRow);        
+        $('.leaderboard').append(noLeaderboard);
+    } else {
+        leaderboard = JSON.parse(window.localStorage.getItem(getDiffBoard));
+
+        for (i = 0; i < leaderboard.position.length; i++) {
+            var tableRow = `<tr>
+                <td>${leaderboard.position[i]}</td>
+                <td>${leaderboard.username[i]}</td>
+                <td>${leaderboard.score[i]}</td>
+            </tr>`;
+            $('.leaderboard > table').append(tableRow);        
+        }
     }
 
+    
+}
+
+function checkUserScore() {
+    if (window.localStorage.getItem(getDiffBoard) === null) {
+        var tableRowEmpty = `<tr>
+        <td>1</td>
+        <td>${username.val()}</td>
+        <td>${score}</td>
+        </tr>`;
+        $('.leaderboard > table').append(tableRowEmpty);
+    } else {
+        var leaderboardLength = (leaderboard.position.length) - 1;
+        //Should users score be saved
+        if (score > leaderboard.score[leaderboardLength]) {
+            inputUserScore.css('display', 'initial');
+            console.log("User score (" + score + ") is higher than last score in Array (" + leaderboard.score[leaderboardLength]+ "). It can be inputted!");
+
+            leaderboardLength--;
+        } else if (score > leaderboard.score[leaderboardLength]) {
+            console.log(leaderboardLength);
+        }
+        
+        
+        
+        
+        
+        {
+            console.log("Score hasn't reached the leaderboard status, bah humbug!");
+            console.log();
+        }   
+    }
 }
