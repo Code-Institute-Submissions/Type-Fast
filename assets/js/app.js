@@ -18,10 +18,7 @@ var displayWords = [];
 
 
 $(document).ready(function(){
-    obtainWords();
-    // On load open instructions modal
-    //instructionsModal.modal('show');
-    
+    obtainAPI();
     //Change Difficultly
     difficulty.on('click', function(){
         if (difficultyChanger.html() == 'Easy') {
@@ -65,23 +62,17 @@ $(document).ready(function(){
 
 
 //Get words from JSON file
-function obtainWords(){
-    $.getJSON("assets/js/json/words.json", function(data){
-        
-        $.each(data, function(diff, val){
-            displayWords.push(val);
-            
-        });
+function obtainAPI(){
+    $.getJSON("assets/js/json/wordnik-api-key.json", function(data){
+        return data.apiKey;
+
     });
 }
 
 //Show word from JSON 
 function showWord() {
-    //Random Number
-    i = Math.floor(Math.random() * 2);
+    obtainAPI();
 
-    //Displays random word from array
-    displayChoice.html(displayWords[game_difficultly]["words"][i]);
 
 }
 
