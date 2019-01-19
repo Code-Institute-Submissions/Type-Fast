@@ -120,9 +120,12 @@ input[type=text] {
 
 /*Game Over*/
 
+.gameover-alert h1, h3, h4 {
+    font-family: 'Oswald', sans-serif;
+}
 
 .input-user {
-    /*display: none;*/
+    display: none;
  }
 
  .input-user a {
@@ -144,6 +147,11 @@ input[type=text] {
 .leaderboard table {
     margin: 25px auto;
 
+}
+
+.leaderboard h4 {
+    margin: 25px;
+    font-family: 'Oswald', sans-serif;
 }
 
  #table-position {
