@@ -5,7 +5,6 @@ const displayChoice = $('#word-display');
 const userInput = $('#user-input');
 const userScoreMain = $('.user-score');
 const userScore = $('#score');
-const displayScore = $('.user-score');
 const timer = $('#timer-sec');
 const gameoverModal = $('#game-over');
 const gameoverScore = $('#game-over-score');
@@ -15,35 +14,21 @@ const addUser = $('#add-user');
 const username = $('#username');
 
 var game_difficultly = 9;
-<<<<<<< HEAD
-var score = 0;
-
-var displayWords = [];
-
-$(document).ready(function(){
-    
-    obtainWords();
-
-=======
-var score = 25;
+var score = 5;
 
 var displayWords = [];
 
 var leaderboard; 
 
 $(document).ready(function(){
+    
     obtainWords();
-    endGame();
->>>>>>> 334d2e861447258b23e689287708b11aab064b9d
+
     //Change Difficultly
     difficulty.on('click', function(){
         if (difficultyChanger.html() == 'Easy') {
             difficultyChanger.html('Moderate');
-<<<<<<< HEAD
-            game_difficultly = 5;
-=======
             game_difficultly = 6;
->>>>>>> 334d2e861447258b23e689287708b11aab064b9d
         } else if (difficultyChanger.html() == 'Moderate') {
             difficultyChanger.html('Hard');
             game_difficultly = 3;
@@ -56,25 +41,20 @@ $(document).ready(function(){
     //Start the Game
     start.on('click', function(){
         start.css('display', 'none');
-<<<<<<< HEAD
-        displayScore.css('display','initial');
-=======
         userScoreMain.css('display','initial');
->>>>>>> 334d2e861447258b23e689287708b11aab064b9d
         setTimeout(function(){
             game();
             gameTimer();
             gameStatus();
         }, 1000);
         
-<<<<<<< HEAD
     });
 
 
     //Reset the Game 
     reset.on('click', function(){
         start.css('display', 'initial');
-        displayScore.css('display','none');
+        userScoreMain.css('display','none');
         displayChoice.html('When start is clicked, the word will appear here.');
         score = 0;
         userScore.html(score);
@@ -82,9 +62,6 @@ $(document).ready(function(){
     });
     
     
-=======
-    });    
->>>>>>> 334d2e861447258b23e689287708b11aab064b9d
 });
 
 
@@ -112,20 +89,12 @@ function obtainWords() {
 
 //Show word from Wordnik API 
 function showWord() {
-<<<<<<< HEAD
     
     //random number generator
     i = Math.floor(Math.random()*10);
 
     //word to display
     arrayChoice = displayWords[0][3].word;
-=======
-    //Random Number
-    i = Math.floor(Math.random() * 14);
-
-    //Displays random word from array
-    displayChoice.html(displayWords[0]["words"][i]);
->>>>>>> 334d2e861447258b23e689287708b11aab064b9d
 
     //display word
     displayChoice.html(arrayChoice);
