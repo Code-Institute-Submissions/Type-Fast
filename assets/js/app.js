@@ -6,30 +6,32 @@ const difficultyChanger = $('#difficulty-changer');
 const displayChoice = $('#word-display');
 const userInput = $('#user-input');
 const userScore = $('#score');
+const displayScore = $('.user-score');
 const timer = $('#timer-sec');
 const gameoverModal = $('#game-over');
 const gameoverScore = $('#game-over-score');
 const gameoverDiff = $('#game-over-diff');
 
-var game_difficultly = 0;
+var game_difficultly = 9;
 var score = 0;
 
 var displayWords = [];
 
-
 $(document).ready(function(){
-    obtainAPI();
+    
+    obtainWords();
+
     //Change Difficultly
     difficulty.on('click', function(){
         if (difficultyChanger.html() == 'Easy') {
             difficultyChanger.html('Moderate');
-            game_difficultly = 1;
+            game_difficultly = 5;
         } else if (difficultyChanger.html() == 'Moderate') {
             difficultyChanger.html('Hard');
-            game_difficultly = 2;
+            game_difficultly = 3;
         } else if (difficultyChanger.html() == 'Hard') {
             difficultyChanger.html('Easy');
-            game_difficultly = 0;
+            game_difficultly = 9;
         }
     });
 
@@ -37,7 +39,7 @@ $(document).ready(function(){
     start.on('click', function(){
         //Displays Reset button as game has started
         start.css('display', 'none');
-        reset.css('display','initial');
+        displayScore.css('display','initial');
         setTimeout(function(){
             game();
             gameTimer();
@@ -50,7 +52,7 @@ $(document).ready(function(){
     //Reset the Game 
     reset.on('click', function(){
         start.css('display', 'initial');
-        reset.css('display','none');
+        displayScore.css('display','none');
         displayChoice.html('When start is clicked, the word will appear here.');
         score = 0;
         userScore.html(score);
@@ -61,19 +63,39 @@ $(document).ready(function(){
 });
 
 
-//Get words from JSON file
-function obtainAPI(){
-    $.getJSON("assets/js/json/wordnik-api-key.json", function(data){
-        return data.apiKey;
+// ** NOT WORKING ** Get API Key from JSON file
+function obtainAPIKey(){
+    
 
-    });
+    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=10&api_key=" + apiKey;
+
+    return apiLink; 
 }
 
-//Show word from JSON 
+function obtainWords() {
+
+    //apiLink = obtainAPIKey();
+    //console.log(apiLink);
+    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=10&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+
+    $.getJSON(apiLink, function(data){ 
+	    displayWords.push(data);
+    })
+
+    console.log(displayWords);
+}
+
+//Show word from Wordnik API 
 function showWord() {
-    obtainAPI();
+    
+    //random number generator
+    i = Math.floor(Math.random()*10);
 
+    //word to display
+    arrayChoice = displayWords[0][3].word;
 
+    //display word
+    displayChoice.html(arrayChoice);
 }
 
 //Game
@@ -92,8 +114,6 @@ function game() {
             userInput.val("");
             } 
         } 
-        
-        
     });
     
 
@@ -115,7 +135,7 @@ function wordsMatch(){
 
 //Timer
 function gameTimer() {
-    t = 5;
+    t = game_difficultly;
 
     var interval = setInterval(function(){
         timer.html(t);
