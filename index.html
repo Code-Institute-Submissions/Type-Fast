@@ -33,8 +33,20 @@
                             </div>
 
                             <!--Local Storage Leadbaord-->
-                            <div class="local-leadboad">
-                                
+                            <div class="local-leaderboad">
+                                <div class="input-user">
+                                    <input type="text" name="username" id="username">
+                                    <a id="add-user">Add!</a>
+                                </div>
+                                <div class="leaderboard">
+                                    <table>
+                                        <tr>
+                                            <th class="center-content" id="table-position">No.</th>
+                                            <th class="center-content" id="table-username">Username</th>
+                                            <th class="center-content" id="table-score">Score</th>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -91,3 +103,12 @@
         <script src="assets/js/app.js"></script>
     </body>
 </html>
+
+<!--for (let i = 0; i < data.position.length; i++) {
+    var tableRow = `<tr>
+        <td>${data.position[i]}</td>
+        <td>${data.usernameinput[i]}</td>
+        <td>${data.score[i]}</td>
+    </tr>`;
+    $('.leaderboard > table').append(tableRow);        
+}-->

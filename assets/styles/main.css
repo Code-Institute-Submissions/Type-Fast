@@ -114,6 +114,58 @@ input[type=text] {
     font-size: 14pt;
 }
 
+
+/*Game Over*/
+
+.gameover-alert h1, h3, h4 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.input-user {
+    display: none;
+ }
+
+ .input-user a {
+    text-decoration: none;
+    font-family: "Oswald", sans-serif;
+    color: #000;
+    cursor: pointer;
+ }
+
+ .input-user a:hover {
+    color: rgb(116, 116, 116);
+ }
+
+.leaderboard {
+    width: 50%;
+    margin: auto;
+}
+
+.leaderboard table {
+    margin: 25px auto;
+
+}
+
+.leaderboard h4 {
+    margin: 25px;
+    font-family: 'Oswald', sans-serif;
+}
+
+ #table-position {
+    width: 50px;
+    
+ }
+
+
+ #table-username {
+    width: 100px;
+ }
+
+
+ #table-score {
+    width: 75px;
+ }
+
 /*Background Colors*/
 
 header {
@@ -126,4 +178,3 @@ body {
 }
 
 
-/**/
