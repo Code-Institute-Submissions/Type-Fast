@@ -121,6 +121,11 @@ input[type=text] {
     font-family: 'Oswald', sans-serif;
 }
 
+.popper-emoji {
+    height: 35px;
+    width: 35px;
+}
+
 .input-user {
     display: none;
  }

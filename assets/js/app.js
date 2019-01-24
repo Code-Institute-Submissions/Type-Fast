@@ -14,7 +14,7 @@ const addUser = $('#add-user');
 const username = $('#username');
 
 var game_difficultly = 9;
-var score = 27;
+var score = 46;
 
 var displayWords = [];
 
@@ -97,7 +97,7 @@ function game() {
             userScore.html(score);
             userInput.val("");
             showWord();
-            displayChoice.animate({color: 'rgb(0, 153, 0)'}).animate({color: '#fff'}, 500);
+            displayChoice.animate({color: 'rgb(0, 204, 0)'}).animate({color: '#fff'}, 300);
         } else {
             if(userInput.val().length === displayChoice.html().length){
                 displayChoice.animate({color: 'rgb(235, 25, 25)'}).effect("shake").animate({color: '#fff'}, 500);
@@ -192,6 +192,9 @@ function leaderboard() {
         if (leaderboard[0].LScore < score) {
 
             //Is leaderboard, overwrite and save
+
+            var newHighscore = `<h4><span class="popper-emoji">&#x1F389</span> New highscore! <span class="popper-emoji">&#x1F389</span></h4>`;
+            $('.gameover-alert').append(newHighscore);
 
             inputUserScore.css('display', 'initial');
 
