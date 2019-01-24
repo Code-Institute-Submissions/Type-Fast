@@ -14,7 +14,7 @@ const addUser = $('#add-user');
 const username = $('#username');
 
 var game_difficultly = 9;
-var score = 5;
+var score = 27;
 
 var displayWords = [];
 
@@ -23,7 +23,7 @@ var leaderboard;
 $(document).ready(function(){
     
     obtainWords();
-
+    
     //Change Difficultly
     difficulty.on('click', function(){
         if (difficultyChanger.html() == 'Easy') {
@@ -49,19 +49,6 @@ $(document).ready(function(){
         }, 1000);
         
     });
-
-
-    //Reset the Game 
-    reset.on('click', function(){
-        start.css('display', 'initial');
-        userScoreMain.css('display','none');
-        displayChoice.html('When start is clicked, the word will appear here.');
-        score = 0;
-        userScore.html(score);
-        userInput.val("");
-    });
-    
-    
 });
 
 
@@ -83,8 +70,6 @@ function obtainWords() {
     $.getJSON(apiLink, function(data){ 
 	    displayWords.push(data);
     })
-
-    console.log(displayWords);
 }
 
 //Show word from Wordnik API 
@@ -112,12 +97,12 @@ function game() {
             userScore.html(score);
             userInput.val("");
             showWord();
-            //green fade out
+            displayChoice.animate({color: 'rgb(0, 153, 0)'}).animate({color: '#fff'}, 500);
         } else {
-            // wiggle red fade out
-           if (userInput.val().length === displayChoice.html().length) {
-            userInput.val("");
-            } 
+            if(userInput.val().length === displayChoice.html().length){
+                displayChoice.animate({color: 'rgb(235, 25, 25)'}).effect("shake").animate({color: '#fff'}, 500);
+                userInput.val("");
+            }
         } 
     });
 }
@@ -180,6 +165,7 @@ function endGame() {
     });
 }
 
+//Leaderboard
 function leaderboard() {
 
     getDiffBoard = difficultyChanger.html();
@@ -187,10 +173,7 @@ function leaderboard() {
     
     if(localStorage.getItem(getDiffBoard) === null) {
 
-            //No Leaderboard in storage
-        
-            console.log('does qualify, but no leaderboard in localstorage.');
-            
+            //No Leaderboard in storage            
             inputUserScore.css('display', 'initial');
             
             addUser.on('click', function(){
@@ -207,7 +190,6 @@ function leaderboard() {
     } else {
         //Leaderboard in storage
         if (leaderboard[0].LScore < score) {
-            console.log('does qualify, leaderboard in storage.');
 
             //Is leaderboard, overwrite and save
 
@@ -222,11 +204,6 @@ function leaderboard() {
 
             addUser.on('click', function(){
                 $('.leaderboard > table').find('td').html("");
-                //var tableHeadings = `<tr>
-                //    <th class="center-content" id="table-position">No.</th>
-                //    <th class="center-content" id="table-username">Username</th>
-                //    <th class="center-content" id="table-score">Score</th>
-                //</tr>`
                 var tableRowEmpty = `<tr>
                 <td>1</td>
                 <td>${username.val()}</td>
@@ -237,7 +214,6 @@ function leaderboard() {
                 inputUserScore.css('display', 'none');
             });
         } else {
-            console.log('doesnt qualify');
             var userScoreIsLess = `<h4>Oh no!>:( You didn't quite score enough to reach the leaderboard, better luck next time!</h4>`;
             $('.gameover-alert').append(userScoreIsLess);
             var tableRow = `<tr>
@@ -251,17 +227,15 @@ function leaderboard() {
     }    
 }
 
+//Save user to LocalStorage
 function saveUser(user, overwrite) {
     if (overwrite) {
-        localStorage.clear();
-        console.log('Local Storage has been cleared.')
+        localStorage.removeItem(getDiffBoard);
     } 
 
     var newHighscore = [
     {name: user, LScore: score}
     ];
 
-    localStorage.setItem(getDiffBoard, JSON.stringify(newHighscore));
-    
-    console.log('Item Saved');    
+    localStorage.setItem(getDiffBoard, JSON.stringify(newHighscore));  
 }
