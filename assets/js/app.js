@@ -5,7 +5,7 @@ const displayChoice = $('#word-display');
 const userInput = $('#user-input');
 const userScoreMain = $('.user-score');
 const userScore = $('#score');
-const timer = $('#timer-sec');
+const timerHTML = $('#timer-sec');
 const gameoverModal = $('#game-over');
 const gameoverScore = $('#game-over-score');
 const gameoverDiff = $('#game-over-diff');
@@ -13,12 +13,12 @@ const inputUserScore = $('.input-user');
 const addUser = $('#add-user');
 const username = $('#username');
 
-var game_difficultly = 9;
+var game_difficultly = 9.0;
 var score = 46;
-
+var timer = new easytimer.Timer();
 var displayWords = [];
-
 var leaderboard; 
+var statusTime;
 
 $(document).ready(function(){
     
@@ -28,13 +28,13 @@ $(document).ready(function(){
     difficulty.on('click', function(){
         if (difficultyChanger.html() == 'Easy') {
             difficultyChanger.html('Moderate');
-            game_difficultly = 6;
+            game_difficultly = 6.0;
         } else if (difficultyChanger.html() == 'Moderate') {
             difficultyChanger.html('Hard');
-            game_difficultly = 3;
+            game_difficultly = 3.0;
         } else if (difficultyChanger.html() == 'Hard') {
             difficultyChanger.html('Easy');
-            game_difficultly = 9;
+            game_difficultly = 9.0;
         }
     });
 
@@ -79,7 +79,7 @@ function showWord() {
     i = Math.floor(Math.random()*10);
 
     //word to display
-    arrayChoice = displayWords[0][3].word;
+    arrayChoice = displayWords[0][i].word;
 
     //display word
     displayChoice.html(arrayChoice);
@@ -119,27 +119,29 @@ function wordsMatch(userInput, display){
 
 //Timer
 function gameTimer() {
-    t = game_difficultly;
-
-    var interval = setInterval(function(){
-        timer.html(t);
-        if (t === 0 ) {
-            clearInterval(interval);
-        } else {
-            t--;
-        }
-    }, 1000);
+    //Easytimer.js by Albert Gonzalez - https://albert-gonzalez.github.io/easytimer.js/ - Use of slice() to on get
+    timer.start({countdown: true, startValues: {seconds: game_difficultly}});
+    timeDisplay = timer.getTimeValues().toString();
+    timerHTML.html(timeDisplay.slice(-1));
+    timer.addEventListener('secondsUpdated', function (e) {
+        timeDisplay = timer.getTimeValues().toString();
+        timerHTML.html(timeDisplay.slice(-1));
+        statusTime = (timeDisplay.slice(-1));
+        console.log(statusTime);
+    });
 }
 
 //Status 
 function gameStatus() {
+
+    console.log('Checking game status')
+
     var status = setInterval(function(){
-        if (t === 0 && userInput.val() !== displayChoice.html()) {
+        if (statusTime === '0' && userInput.val() !== displayChoice.html()) {
             clearInterval(status); 
             setTimeout(function(){
                 endGame();
-            }, 750);
-            
+            }, 100);
         } 
     }, 100);    
 }
