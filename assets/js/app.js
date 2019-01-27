@@ -133,7 +133,7 @@ function gameTimer(reset) {
     }
 }
 
-//Status 
+//Check Game Status 
 function gameStatus() {
     var status = setInterval(function(){
         if (statusTime === '0' && userInput.val() !== displayChoice.html()) {
@@ -147,15 +147,19 @@ function gameStatus() {
 
 //Game Ends 
 function endGame() {
-    //Show Leaderboard
-    leaderboard();
+    
     
     //shows game over modal 
     gameoverModal.modal('show');
+
+    //Shows Leaderboard
+    leaderboard();
+
+    //Populates Modal
     gameoverScore.html(score);
     gameoverDiff.html(difficultyChanger.html());
 
-
+    //When Modal is closed, reset the game
     gameoverModal.on('hidden.bs.modal', function(){
         start.css('display', 'initial');
         userScoreMain.css('display','none');
