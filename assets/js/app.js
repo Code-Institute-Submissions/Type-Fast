@@ -51,16 +51,6 @@ $(document).ready(function(){
     });
 });
 
-
-// ** NOT WORKING ** Get API Key from JSON file
-function obtainAPIKey(){
-    
-
-    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=10&api_key=" + apiKey;
-
-    return apiLink; 
-}
-
 function obtainWords() {
 
     //apiLink = obtainAPIKey();
