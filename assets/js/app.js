@@ -51,16 +51,44 @@ $(document).ready(function(){
     });
 });
 
+function obtainAPIKey() {
+    $.ajax({
+        url: 'assets/js/json/wordnik-api-key.json',
+        async: false,
+        success: function(data) {
+            api = data.apiKey;
+        }
+    })
+
+    return api;
+}
+
 function obtainWords() {
 
-    //apiLink = obtainAPIKey();
-    //console.log(apiLink);
-    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=10&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+    //Get Key
+    apiKey = obtainAPIKey();
+    
+    //apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=10&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+
+    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=10&api_key=" + apiKey;
 
     $.getJSON(apiLink, function(data){ 
 	    displayWords.push(data);
     })
 
+    //Filter through to remove words with accented letters.
+
+}
+
+function apigotyet() {
+    var status = setInterval(function(){
+        if (api = "") {
+            console.log('still waiting')
+        } else {
+            clearInterval(status); 
+            console.log('Got it!')
+        }
+    }, 100); 
 }
 
 //Show word from Wordnik API 
