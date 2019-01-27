@@ -227,7 +227,7 @@ function leaderboard() {
                 inputUserScore.css('display', 'none');
             });
         } else {
-            var userScoreIsLess = `<h4>Oh no!>:( You didn't quite score enough to reach the leaderboard, better luck next time!</h4>`;
+            var userScoreIsLess = `<h4>Oh no! <span>&#x2639</span> You didn't quite score enough to reach the leaderboard.</h4>`;
             $('.gameover-alert').append(userScoreIsLess);
             var tableRow = `<tr>
             <td>1</td>
