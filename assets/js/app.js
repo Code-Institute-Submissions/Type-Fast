@@ -14,7 +14,7 @@ const addUser = $('#add-user');
 const username = $('#username');
 
 var game_difficultly = 10;
-var score;
+var score = 0;
 var timer = new easytimer.Timer();
 var displayWords = [];
 var leaderboard; 
@@ -70,23 +70,26 @@ function obtainWords() {
     $.getJSON(apiLink, function(data){ 
 	    displayWords.push(data);
     })
+
 }
 
 //Show word from Wordnik API 
 function showWord() {
     
     //random number generator
-    i = Math.floor(Math.random()*5);
+    i = Math.floor(Math.random()*10);
 
     //word to display
     arrayChoice = displayWords[0][i].word;
 
     //display word
     displayChoice.html(arrayChoice);
+    
 }
 
 //Game
 function game() {
+    userInput.focus();
     showWord();
     gameTimer();
     
@@ -95,6 +98,7 @@ function game() {
             score++;
             gameTimer(true);
             userScore.html(score);
+            console.log(score);
             userInput.val("");
             showWord();
             displayChoice.animate({color: 'rgb(0, 204, 0)'}).animate({color: '#fff'}, 300);
@@ -167,6 +171,7 @@ function endGame() {
         score = 0;
         userScore.html(score);
         userInput.val("");
+        timer.reset();
     });
 }
 
