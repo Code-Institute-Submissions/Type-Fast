@@ -54,7 +54,7 @@ $(document).ready(function(){
 //Get Words from API
 function obtainWords() {
 
-    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=10&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
 
     //Filters out any word with accents and puts them into an array
     $.getJSON(apiLink, function(data){ 
@@ -77,7 +77,7 @@ function obtainWords() {
 function showWord() {
     
     //random number generator
-    i = Math.floor(Math.random()*10);
+    i = Math.floor(Math.random()*100);
 
     //word to display
     arrayChoice = displayWords[i];
@@ -98,7 +98,6 @@ function game() {
             score++;
             gameTimer(true);
             userScore.html(score);
-            console.log(score);
             userInput.val("");
             showWord();
             displayChoice.animate({color: 'rgb(0, 204, 0)'}).animate({color: '#fff'}, 300);
@@ -171,7 +170,8 @@ function endGame() {
         score = 0;
         userScore.html(score);
         userInput.val("");
-        timer.reset();
+        timer.stop();
+        timerHTML.html("0");
     });
 }
 
