@@ -51,10 +51,26 @@ $(document).ready(function(){
     });
 });
 
+//Get API Key from JSON file
+function obtainAPIKey() {
+    $.ajax({
+        url: 'assets/js/json/wordnik-api-key.json',
+        async: false,
+        success: function(data) {
+            api = data.apiKey;
+        }
+    })
+
+    return api;
+}
+
 //Get Words from API
 function obtainWords() {
 
-    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+    //Get Key
+    apiKey = obtainAPIKey();
+
+    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=" + apiKey;
 
     //Filters out any word with accents and puts them into an array
     $.getJSON(apiLink, function(data){ 
