@@ -1,6 +1,6 @@
 # Type Fast - Interactive Front End Milestone Project
 
-Type Fast is a Single-Page Application design to help users master typing at speed with pin point accuracy. The application offers easy to use functionally and offers a competition build it with the use of the browser storage system. 
+Type Fast is a Single-Page Application design to help users master typing at speed with pin point accuracy. The application offers easy to use functionally and offers a competition built in with the use of the browser LocalStorage. 
 
 You can see the working single page application [here](https://msped.github.io/Interactive-Front-End-Project/) on GitHub Pages. 
 
@@ -18,11 +18,9 @@ You can see the working single page application [here](https://msped.github.io/I
 
 - Users wish to change the difficulty before starting a match to test there skills at different levels. The difficulty setting will be dependant on the amount of seconds it takes to complete the typing of each word. 
 
-**** optional - is the user in on leadbaord cheers/confetie on screen - celebration. *****
-
 Initial Wireframes for the site:
 
-[Desktop](https://github.com/msped/Interactive-Front-End-Project/blob/master/assets/wireframes/exports/Web%201920%20%E2%80%93%201.png) | [Mobile](https://github.com/msped/Interactive-Front-End-Project/blob/master/assets/wireframes/exports/iPhone%206-7-8%20Plus%20%E2%80%93%201.png)
+[Desktop](https://github.com/msped/Interactive-Front-End-Project/blob/master/assets/wireframes/exports/Web%201920%20%E2%80%93%201.png)  |  [Mobile](https://github.com/msped/Interactive-Front-End-Project/blob/master/assets/wireframes/exports/iPhone%206-7-8%20Plus%20%E2%80%93%201.png)
 
 ## Features
 
@@ -42,9 +40,7 @@ Initial Wireframes for the site:
 
 ### Features left to implement 
 
-- Implement a site leaderboard instead of a leaderboard that is stored within the browsers local storage. 
-
-- Have a 'league' that friends could compete with each other.
+- One feature I would of like to implement is a 'League' type of competition that friends can invite each other into.
 
 ## Technologies Used
 
@@ -62,14 +58,20 @@ Below are the libraries and languages used in creating this project.
 - [jQuery](https://jquery.com/)
     - jQuery was used to simplfy the manipulation of the DOM.
 
+- [jQuery UI](https://jqueryui.com/)
+    - jQuery UI was used to implement effects into DOM elements. 
+
 - [Wordnik API](https://developer.wordnik.com/)
     - The Wordnik API was used in the random generation of words from the dictionary for the game.
+
+- [Easytimer.js](http://albert-gonzalez.github.io/easytimer.js/)
+    - Easytimer.js by Albert Gonzalez was used to acquire an accurate easy to use timer. 
 
 ## Testing
 
 - try for functions where take in agruements they return parameters will result in easier jamine testing 
 
-
+- [Jasmine Testing Results]()
 
 ## Deployment
 
@@ -78,7 +80,3 @@ This single page application is deployed using GitHub Pages, you can view it [he
 ## Credits
 
 ### Acknowledgements
-
-** Build something in a seperate branch and create a pull request ** pull request that has been merged and closed
-
-** 
