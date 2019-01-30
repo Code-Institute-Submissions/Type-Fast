@@ -13,6 +13,8 @@ const inputUserScore = $('.input-user');
 const addUser = $('#add-user');
 const username = $('#username');
 
+require('dotenv').config();
+
 var game_difficultly = 10;
 var score = 0;
 var timer = new easytimer.Timer();
@@ -51,26 +53,10 @@ $(document).ready(function(){
     });
 });
 
-//Get API Key from JSON file
-function obtainAPIKey() {
-    $.ajax({
-        url: 'assets/js/json/wordnik-api-key.json',
-        async: false,
-        success: function(data) {
-            api = data.apiKey;
-        }
-    })
-
-    return api;
-}
-
 //Get Words from API
 function obtainWords() {
 
-    //Get Key
-    apiKey = obtainAPIKey();
-
-    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=" + apiKey;
+    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=" + process.env.API_KEY;
 
     //Filters out any word with accents and puts them into an array
     $.getJSON(apiLink, function(data){ 
