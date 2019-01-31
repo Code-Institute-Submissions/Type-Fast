@@ -122,8 +122,8 @@ input[type=text] {
 }
 
 .popper-emoji {
-    height: 35px;
-    width: 35px;
+    height: 2.18em;
+    width: 2.18em;
 }
 
 .input-user {
@@ -157,13 +157,13 @@ input[type=text] {
 }
 
  #table-position {
-    width: 50px;
+    width: 3.13em;
     
  }
 
 
  #table-username {
-    width: 100px;
+    width: 6.25em;
  }
 
 
