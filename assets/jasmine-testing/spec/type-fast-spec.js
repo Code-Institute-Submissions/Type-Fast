@@ -1,13 +1,13 @@
 describe("Type Fast", function(){
-    describe("Words Match? Hero & Villian", function(){
+    describe("Words Match? hero & villian", function(){
         it("Should return False", function(){
-            expect(wordsMatch('Hero', 'Villian')).toBe(false);
+            expect(wordsMatch('hero', 'villian')).toBe(false);
         });
     });
 
-    describe("Words Match? Tempest & Tempest", function(){
+    describe("Words Match? tempest & tempest", function(){
         it("Should return True", function(){
-            expect(wordsMatch('Tempest', 'Tempest')).toBe(true);
+            expect(wordsMatch('tempest', 'tempest')).toBe(true);
         });
     });
 

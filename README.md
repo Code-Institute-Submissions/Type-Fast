@@ -69,13 +69,24 @@ Below are the libraries and languages used in creating this project.
 
 ## Testing
 
-- try for functions where take in agruements they return parameters will result in easier jamine testing 
+- [Jasmine Testing Results](https://msped.github.io/Interactive-Front-End-Project/assets/jasmine-testing/jasmine-testing.html) 
+    - In the Jasmine testing I tested the wordsMatch() function numerous times. I conducted 3 tests on the function, each test showing the True and False outcomes for the three tests. 
+        
+        1.  The first test is to make sure that the basic principles of the function works. I tested with non-capitalised words, hero & villian, to test that the function will `return false`.
 
-- [Jasmine Testing Results](https://msped.github.io/Interactive-Front-End-Project/assets/jasmine-testing/jasmine-testing.html)
+        The second half of this test is to `return true`. In order to do this I tested the words tempest & tempest in the wordsMatch() function. 
+
+        2. The second Jasmine Test conducted looked at the capitialisation of the first letters of words. The first test conducted was to `return false` with the words Mercedes & mercedes.
+
+        The second half of the capitialisation test was to return a true value. I use the words Ford & Ford to test this and the result was expected, the function returned `true`.
+
+        3. Finally the last of the Jasmine Tests conducted was to test the function against hyphenated words. Firstly to test that the function would `return false` I passed in the parameters 'part-time' & 'part time', which came back as false. 
+
+        The second half of the test was to test if the function returned `false`. The parameters for this test were 'part-time' & 'part-time'. Which subsequently passed returning `true`.
 
 ## Deployment
 
-This single page application is deployed using GitHub Pages, you can view it [here](https://msped.github.io/Interactive-Front-End-Project/).
+This single page application is deployed using Heroku [here]().
 
 ## Credits
 
