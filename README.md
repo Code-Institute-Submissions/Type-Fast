@@ -71,7 +71,7 @@ Below are the libraries and languages used in creating this project.
 
 - try for functions where take in agruements they return parameters will result in easier jamine testing 
 
-- [Jasmine Testing Results]()
+- [Jasmine Testing Results](https://msped.github.io/Interactive-Front-End-Project/assets/jasmine-testing/jasmine-testing.html)
 
 ## Deployment
 
