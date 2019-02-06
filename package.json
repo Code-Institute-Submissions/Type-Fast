@@ -2,7 +2,7 @@
   "name": "type-fast",
   "version": "1.0.0",
   "description": "type-fast-milestone",
-  "main": "",
+  "main": "assets/js/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node assets/js/server.js"
@@ -19,10 +19,11 @@
   "homepage": "https://github.com/msped/Interactive-Front-End-Project#readme",
   "dependencies": {
     "dotenv": "^6.2.0",
-    "easytimer.js": "^3.0.1"
+    "easytimer.js": "^3.0.1",
+    "uniq": "^1.0.1"
   },
-  "engines" : { 
-    "node" : ">=8.0.0 <11.0.0",
-    "npm" :"6.4.1"
+  "engines": {
+    "node": ">=8.0.0 <11.0.0",
+    "npm": "6.4.1"
   }
 }
