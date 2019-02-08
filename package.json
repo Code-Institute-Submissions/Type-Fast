@@ -2,7 +2,7 @@
   "name": "type-fast",
   "version": "1.0.0",
   "description": "type-fast-milestone",
-  "main": "assets/js/app.js",
+  "main": "node assets/js/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node assets/js/app.js"
@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/msped/Interactive-Front-End-Project#readme",
   "dependencies": {
-    "dotenv": "^6.2.0",
     "easytimer.js": "^3.0.1",
     "uniq": "^1.0.1"
   },

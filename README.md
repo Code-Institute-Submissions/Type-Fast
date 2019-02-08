@@ -2,7 +2,6 @@
 
 Type Fast is a Single-Page Application design to help users master typing at speed with pin point accuracy. The application offers easy to use functionally and offers a competition built in with the use of the browser LocalStorage. 
 
-You can see the working single page application [here](https://msped.github.io/Interactive-Front-End-Project/) on GitHub Pages. 
 
 ## UX 
 

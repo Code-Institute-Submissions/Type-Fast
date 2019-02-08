@@ -1,8 +1,3 @@
-const env = require('dotenv');
-env.config();
-
-API_KEY = process.env.API_KEY;
-
 const start = $('#start-game');
 const difficulty = $('.difficulty');
 const difficultyChanger = $('#difficulty-changer');
@@ -20,7 +15,6 @@ const username = $('#username');
 
 var game_difficultly = 10;
 var score = 0;
-//var timer = new easytimer.Timer();
 var displayWords = [];
 var leaderboard; 
 var statusTime;
@@ -60,19 +54,31 @@ $(document).ready(function(){
     });
 });
 
+function obtainAPIKey() {
+    $.ajax({
+        url: 'assets/js/json/wordnik-api-key.json',
+        async: false,
+        success: function(data) {
+            api = data.apiKey;
+        }
+    })
+
+    return api;
+}
+
 //Get Words from API
 function obtainWords() {
 
-    //apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+    apiKey = obtainAPIKey();
 
-    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=" + API_KEY;
+    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=" + apiKey;
 
     //Filters out any word with accents and puts them into an array
     $.getJSON(apiLink, function(data){ 
         
         var regExp = new RegExp("^[a-z]*$");
 
-        for (i = 0, len = 10; i < len; i++){
+        for (i = 0, len = 100; i < len; i++){
             
             var word = data[i].word;
 
