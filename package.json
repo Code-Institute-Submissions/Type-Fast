@@ -2,10 +2,10 @@
   "name": "type-fast",
   "version": "1.0.0",
   "description": "type-fast-milestone",
-  "main": "node assets/js/app.js",
+  "main": "node assets/js/bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node assets/js/app.js"
+    "start": "node assets/js/bundle.js"
   },
   "repository": {
     "type": "git",

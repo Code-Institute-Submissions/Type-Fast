@@ -1,1 +1,1 @@
-web: node assets/js/app.js
+web: node assets/js/bundle.js
