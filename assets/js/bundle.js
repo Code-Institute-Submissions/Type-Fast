@@ -625,6 +625,10 @@ function game() {
     userInput.on('input', function () {
         if (wordsMatch(userInput.val(), displayChoice.html())) {
             score++;
+            if (score % 50 === 0) {
+                displayWords = [];
+                obtainWords();
+            }
             gameTimer(true);
             userScore.html(score);
             userInput.val("");
