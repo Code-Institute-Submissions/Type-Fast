@@ -1,1 +1,0 @@
-web: node assets/js/bundle.js
