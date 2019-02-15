@@ -2,6 +2,7 @@
 
 Type Fast is a Single-Page Application design to help users master typing at speed with pin point accuracy. The application offers easy to use functionally and offers a competition built in with the use of the browser LocalStorage. 
 
+Type fast is deployed using GitHub pages, you can view it [here](https://msped.github.io/Interactive-Front-End-Project/).
 
 ## UX 
 
@@ -66,6 +67,9 @@ Below are the libraries and languages used in creating this project.
 - [Easytimer.js](http://albert-gonzalez.github.io/easytimer.js/)
     - Easytimer.js by Albert Gonzalez was used to acquire an accurate easy to use timer. 
 
+- [Browserify](http://browserify.org/)
+    - Used for writing Node.js to be deployed in browser. 
+
 ## Testing
 
 - [Jasmine Testing Results](https://msped.github.io/Interactive-Front-End-Project/assets/jasmine-testing/jasmine-testing.html) 
@@ -85,7 +89,7 @@ Below are the libraries and languages used in creating this project.
 
 ## Deployment
 
-This single page application is deployed using Heroku [here]().
+This single page application is deployed using GitHub pages [here](https://msped.github.io/Interactive-Front-End-Project/).
 
 ## Credits
 
