@@ -705,7 +705,13 @@ function endGame() {
         userInput.val("");
         timer.stop();
         timerHTML.html("0");
+        gameTimer(true);
     });
+}
+
+//Reset Game 
+function reset() {
+    
 }
 
 //Leaderboard
