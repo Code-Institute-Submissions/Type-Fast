@@ -82,6 +82,10 @@ function showWord() {
     //random number generator
     i = Math.floor(Math.random()*100);
 
+    if(arrayChoice == i) {
+        i = Math.floor(Math.random()*100);
+    }   
+
     //word to display
     arrayChoice = displayWords[i];
 
