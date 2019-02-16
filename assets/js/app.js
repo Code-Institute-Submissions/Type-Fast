@@ -87,7 +87,7 @@ function showWord() {
 
     //display word
     displayChoice.html(arrayChoice);
-    
+        
 }
 
 //Game
@@ -157,8 +157,7 @@ function gameStatus() {
 
 //Game Ends 
 function endGame() {
-    
-    
+
     //shows game over modal 
     gameoverModal.modal('show');
 
@@ -178,14 +177,9 @@ function endGame() {
         userScore.html(score);
         userInput.val("");
         timer.stop();
+        timer.reset();
         timerHTML.html("0");
-        gameTimer(true);
     });
-}
-
-//Reset Game 
-function reset() {
-    
 }
 
 //Leaderboard
