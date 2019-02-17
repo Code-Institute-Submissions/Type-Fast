@@ -47,6 +47,10 @@
     margin: 25px 0 0 0;
 }
 
+.word-display {
+    height: 35px;
+}
+
 .game-info h2, p, .word-display span {
     font-family: "Oswald", sans-serif;
     color: #fff;
