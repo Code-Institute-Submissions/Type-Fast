@@ -78,7 +78,6 @@ function obtainWords() {
 
 //Show word from Wordnik API 
 function showWord() {
-    var x; 
 
     //random number generator
     i = Math.floor(Math.random()*100);
@@ -86,17 +85,10 @@ function showWord() {
 
     //word to display
     arrayChoice = displayWords[i];
-    if (x !== ""){
-        if (x === i){
-            i = Math.floor(Math.random()*100);
-            arrayChoice = displayWords[i];
-        }
-    }   
+    
 
     //display word
     displayChoice.html(arrayChoice);
-    
-    x = i;
         
 }
 
@@ -167,6 +159,8 @@ function gameStatus() {
 
 //Game Ends 
 function endGame() {
+
+    obtainWords();
 
     //shows game over modal 
     gameoverModal.modal('show');
