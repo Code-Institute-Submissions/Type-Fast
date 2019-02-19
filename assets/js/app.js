@@ -13,13 +13,11 @@ const inputUserScore = $('.input-user');
 const addUser = $('#add-user');
 const username = $('#username');
 
-var game_difficultly = 10;
+var game_difficulty = 10;
 var score = 0;
 var displayWords = [];
 var leaderboard; 
 var statusTime;
-
-var { Timer } = require('easytimer.js');
 
 var timer = new Timer();
 
@@ -31,13 +29,13 @@ $(document).ready(function(){
     difficulty.on('click', function(){
         if (difficultyChanger.html() == 'Easy') {
             difficultyChanger.html('Moderate');
-            game_difficultly = 7;
+            game_difficulty = 7;
         } else if (difficultyChanger.html() == 'Moderate') {
             difficultyChanger.html('Hard');
-            game_difficultly = 4;
+            game_difficulty = 4;
         } else if (difficultyChanger.html() == 'Hard') {
             difficultyChanger.html('Easy');
-            game_difficultly = 10;
+            game_difficulty = 10;
         }
     });
 
@@ -57,7 +55,7 @@ $(document).ready(function(){
 //Get Words from API
 function obtainWords() {
 
-    apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+    const apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
 
     //Filters out any word with accents and puts them into an array
     $.getJSON(apiLink, function(data){ 
@@ -80,11 +78,11 @@ function obtainWords() {
 function showWord() {
 
     //random number generator
-    i = Math.floor(Math.random()*100);
+    var i = Math.floor(Math.random()*100);
     
 
     //word to display
-    arrayChoice = displayWords[i];
+    var arrayChoice = displayWords[i];
     
 
     //display word
@@ -136,9 +134,9 @@ function gameTimer(reset) {
     if (reset) {
         timer.reset();
     } else {
-        timer.start({countdown: true, startValues: {seconds: game_difficultly}});
+        timer.start({countdown: true, startValues: {seconds: game_difficulty}});
         timer.addEventListener('secondsUpdated', function (e) {
-            timeDisplay = timer.getTimeValues().toString();
+            var timeDisplay = timer.getTimeValues().toString();
             timerHTML.html(timeDisplay.slice(-1));
             statusTime = (timeDisplay.slice(-1));
         });
@@ -189,8 +187,8 @@ function endGame() {
 //Leaderboard
 function leaderboard() {
 
-    getDiffBoard = difficultyChanger.html();
-    leaderboard = JSON.parse(localStorage.getItem(getDiffBoard));
+    var getDiffBoard = difficultyChanger.html();
+    var leaderboard = JSON.parse(localStorage.getItem(getDiffBoard));
     
     if(localStorage.getItem(getDiffBoard) === null) {
 
