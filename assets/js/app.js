@@ -19,7 +19,7 @@ var displayWords = [];
 var leaderboard; 
 var statusTime;
 
-var timer = new Timer();
+var timer = new easytimer.Timer();
 
 $(document).ready(function(){
     
