@@ -150,9 +150,14 @@ input[type=text] {
     margin: auto;
 }
 
+.leaderboard p {
+    color: #000;
+    text-decoration: underline;
+    font-size: 14pt;
+}
+
 .leaderboard table {
     margin: 25px auto;
-
 }
 
 .leaderboard h4 {
@@ -165,11 +170,9 @@ input[type=text] {
     
  }
 
-
  #table-username {
     width: 6.25em;
  }
-
 
  #table-score {
     width: 75px;
