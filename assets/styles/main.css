@@ -37,56 +37,64 @@
 
 .cursor-line {
     border: 1px #000 solid;
+    background-color: #000;
     width: 1px;
-    margin: 10px;
+    margin: 5px;
 }
 
 /*Main Page*/
 
-.game-info h2 {
-    margin: 25px 0 0 0;
-}
-
-.word-display {
-    height: 35px;
-}
-
-.game-info h2, p, .word-display span {
+.game-info h2, p, .word-display-div span {
     font-family: "Oswald", sans-serif;
     color: #fff;
 }
 
+.game-info h2 {
+    margin: 25px 0 0 0;
+    font-size: 16pt;
+}
+
 .game-info p {
-    font-size: 15pt;
+    font-size: 12pt;
     color: #fff;
 }
 
 .difficulty {
-    margin: 25px; 
-    cursor: pointer
+    margin: 17px; 
+    cursor: pointer;
 }
 
 .difficulty p, .difficulty p span {
-    font-size: 14pt; 
+    font-size: 15pt; 
 }
 
 .timer {
-    margin: 25px;
+    margin: 10px;
+}
+
+#word-display {
+    margin: 15px 0 0 0;
 }
 
 .timer p, .timer p span, #word-display {
-    font-size: 18pt;
+    font-size: 17pt;
 }
 
 .timer-count {
     margin: 0 20px;
 }
 
+.word-display-div {
+    height: 35px;
+}
+
 input[type=text] {
     padding: 10px;
     border: 1px #b1b1b1 solid;
     border-radius: 10px;
-    margin: 25px;
+    margin: 50px 0 20px 0;
+    width: 225px;
+    height: 40px;
 }
 
 .user-settings {
@@ -182,11 +190,61 @@ input[type=text] {
 
 header {
     background-color: #fff;
-    padding: 20px
+    padding: 10px
 }
 
 body {
     background-color:rgb(83, 83, 83);
 }
 
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .cursor-line {
+        border: 1px #000 solid;
+        width: 1px;
+        margin: 10px;
+    }
+
+    header {
+        padding: 20px
+    }
+
+    .game-info h2 {
+        font-size: 18pt;
+    }
+    
+    .game-info p {
+        font-size: 14pt;
+    }
+
+    input[type=text] {
+        padding: 10pz;
+        border: 1px #b1b1b1 solid;
+        border-radius: 10px;
+        margin: 25px;
+    }
+
+    .game-info p {
+        font-size: 15pt;
+    }
+
+    .difficulty p, .difficulty p span {
+        font-size: 16pt; 
+    }
+
+    .timer p, .timer p span, #word-display {
+        font-size: 18pt;
+    }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .game-info {
+        margin: 15px 0 15px 0; 
+    }
+
+    .difficulty {
+        margin: 25px 0 25px 0;
+    }
+}
 
