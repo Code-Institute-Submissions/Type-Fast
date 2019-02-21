@@ -55,14 +55,14 @@ $(document).ready(function(){
 //Get Words from API
 function obtainWords() {
 
-    const apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=100&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+    const apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=50&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
 
     //Filters out any word with accents and puts them into an array
     $.getJSON(apiLink, function(data){ 
         
         var regExp = new RegExp("^[a-z]*$");
 
-        for (i = 0, len = 100; i < len; i++){
+        for (i = 0, len = 50; i < len; i++){
             
             var word = data[i].word;
 
@@ -78,7 +78,7 @@ function obtainWords() {
 function showWord() {
 
     //random number generator
-    var i = Math.floor(Math.random()*100);
+    var i = Math.floor(Math.random()*50);
     
 
     //word to display
@@ -131,7 +131,6 @@ function wordsMatch(userInput, display){
 function gameTimer(reset) {
     timeDisplay = timer.getTimeValues().toString();
     timerHTML.html(timeDisplay.slice(-1));
-    console.log("Time display " + timeDisplay)
     if (reset) {
         timer.reset();
     } else {
@@ -140,7 +139,6 @@ function gameTimer(reset) {
             var timeDisplay = timer.getTimeValues().toString();
             timerHTML.html(timeDisplay.slice(-1));
             statusTime = (timeDisplay.slice(-1));
-            console.log(statusTime);
         });
     }
 }
@@ -162,8 +160,6 @@ function gameStatus() {
 
 //Game Ends 
 function endGame() {
-
-    obtainWords();
 
     //shows game over modal 
     gameoverModal.modal('show');
@@ -209,7 +205,7 @@ function leaderboard() {
             </tr>`;
             $('#highscoreRow').remove();
             $('.leaderboard > table').append(tableRowEmpty);
-            saveUser(username.val(), false);
+            saveUser(username.val(), false, getDiffBoard);
             inputUserScore.css('display', 'none');
         });
         
@@ -240,7 +236,7 @@ function leaderboard() {
                 <td>${score}</td>
                 </tr>`;
                 $('.leaderboard > table').append(tableRowEmpty);
-                saveUser(username.val(), true);
+                saveUser(username.val(), true, getDiffBoard);
                 inputUserScore.css('display', 'none');
             });
         } else {
@@ -260,7 +256,7 @@ function leaderboard() {
 }
 
 //Save user to LocalStorage
-function saveUser(user, overwrite) {
+function saveUser(user, overwrite, getDiffBoard) {
     if (overwrite) {
         localStorage.removeItem(getDiffBoard);
     } 
