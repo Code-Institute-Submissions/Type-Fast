@@ -131,6 +131,7 @@ function wordsMatch(userInput, display){
 function gameTimer(reset) {
     timeDisplay = timer.getTimeValues().toString();
     timerHTML.html(timeDisplay.slice(-1));
+    console.log("Time display " + timeDisplay)
     if (reset) {
         timer.reset();
     } else {
@@ -139,6 +140,7 @@ function gameTimer(reset) {
             var timeDisplay = timer.getTimeValues().toString();
             timerHTML.html(timeDisplay.slice(-1));
             statusTime = (timeDisplay.slice(-1));
+            console.log(statusTime);
         });
     }
 }
@@ -146,12 +148,15 @@ function gameTimer(reset) {
 //Check Game Status 
 function gameStatus() {
     var status = setInterval(function(){
-        if (statusTime === '0' && userInput.val() !== displayChoice.html()) {
-            clearInterval(status); 
-            setTimeout(function(){
-                endGame();
-            }, 100);
-        } 
+        setTimeout(function(){
+            if (statusTime === '0' && userInput.val() !== displayChoice.html()) {
+                clearInterval(status);
+                setTimeout(function () {
+                    endGame();
+                }, 100);
+            } 
+        }, 900)
+        
     }, 100);    
 }
 
@@ -162,6 +167,9 @@ function endGame() {
 
     //shows game over modal 
     gameoverModal.modal('show');
+
+    //Stop timer
+    timer.stop();
 
     //Shows Leaderboard
     leaderboard();
@@ -178,8 +186,6 @@ function endGame() {
         score = 0;
         userScore.html(score);
         userInput.val("");
-        timer.stop();
-        timer.reset();
         timerHTML.html("0");
     });
 }
@@ -192,19 +198,20 @@ function leaderboard() {
     
     if(localStorage.getItem(getDiffBoard) === null) {
 
-            //No Leaderboard in storage            
-            inputUserScore.css('display', 'initial');
+        //No Leaderboard in storage            
+        inputUserScore.css('display', 'initial');
             
-            addUser.on('click', function(){
-                var tableRowEmpty = `<tr>
-                <td>1</td>
-                <td>${username.val()}</td>
-                <td>${score}</td>
-                </tr>`;
-                $('.leaderboard > table').append(tableRowEmpty);
-                saveUser(username.val(), false);
-                inputUserScore.css('display', 'none');
-            });
+        addUser.on('click', function(){
+            var tableRowEmpty = `<tr id="highscoreRow">
+            <td>1</td>
+            <td>${username.val()}</td>
+            <td>${score}</td>
+            </tr>`;
+            $('#highscoreRow').remove();
+            $('.leaderboard > table').append(tableRowEmpty);
+            saveUser(username.val(), false);
+            inputUserScore.css('display', 'none');
+        });
         
     } else {
         //Leaderboard in storage
@@ -212,12 +219,13 @@ function leaderboard() {
 
             //Is leaderboard, overwrite and save
 
-            var newHighscore = `<h4><span class="popper-emoji">&#x1F389</span> New highscore! <span class="popper-emoji">&#x1F389</span></h4>`;
+            var newHighscore = `<h4 id="alert"><span class="popper-emoji">&#x1F389</span> New highscore! <span class="popper-emoji">&#x1F389</span></h4>`;
+            $('#alert').remove();
             $('.gameover-alert').append(newHighscore);
 
             inputUserScore.css('display', 'initial');
 
-            var tableRow = `<tr>
+            var tableRow = `<tr id="highscoreRow">
             <td>1</td>
             <td>${leaderboard[0].name}</td>
             <td>${leaderboard[0].LScore}</td>
@@ -225,7 +233,7 @@ function leaderboard() {
             $('.leaderboard > table').append(tableRow);
 
             addUser.on('click', function(){
-                $('.leaderboard > table').find('td').html("");
+                $('#highscoreRow').remove();
                 var tableRowEmpty = `<tr>
                 <td>1</td>
                 <td>${username.val()}</td>
@@ -236,13 +244,15 @@ function leaderboard() {
                 inputUserScore.css('display', 'none');
             });
         } else {
-            var userScoreIsLess = `<h4>Oh no! <span>&#x2639</span> You didn't quite score enough to reach the leaderboard.</h4>`;
+            var userScoreIsLess = `<h4 id="alert">Oh no! <span>&#x2639</span> You didn't quite score enough to reach the leaderboard.</h4>`;
+            $('#alert').remove();
             $('.gameover-alert').append(userScoreIsLess);
-            var tableRow = `<tr>
+            var tableRow = `<tr id="highscoreRow">
             <td>1</td>
             <td>${leaderboard[0].name}</td>
             <td>${leaderboard[0].LScore}</td>
             </tr>`;
+            $('#highscoreRow').remove();
             $('.leaderboard > table').append(tableRow);
         }
 
