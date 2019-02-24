@@ -100,7 +100,7 @@ Below are the libraries and languages used in creating this project.
     The word first changed to the next word before turn green and fading out to indicate that the word typed is correct to the user.
 
 - Testing changing the difficulty
-    Each difficultly has a different length of time in order to type the word into the input. I tested this by pressing start on the default 'Easy' difficulty to which the timer started on 9 seconds. By clicking on the difficulty displayed till will change to then next one, in this case being 'Moderate'. On moderate I clicked start to which the timer started to countdown at 7 seconds. The final difficulty option 'Hard' when selected started to count down at 4 seconds.
+    Each difficultly has a different length of time in order to type the word into the input. I tested this by pressing start on the default 'Easy' difficulty to which the timer started on 10 seconds. By clicking on the difficulty displayed till will change to then next one, in this case being 'Moderate'. On moderate I clicked start to which the timer started to countdown at 7 seconds. The final difficulty option 'Hard' when selected started to count down at 4 seconds.
 
 - Testing the leaderboard functionality
     In order to test the leaderboard functionality I first emptied the local storage on my browser. When scoring any points with an empty leaderboard in local storage a textbox will appear to add username on the end game modal. When clicking add it will populate this highest score into the table for the user whilest adding to the local storage under the 'Easy' key.
