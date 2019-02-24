@@ -46,7 +46,10 @@ $(document).ready(function(){
         setTimeout(function(){
             game();
             gameTimer();
-            gameStatus();
+            setTimeout(function(){
+                gameStatus();
+            }, 1000)
+            
         }, 1000);
         
     });
@@ -146,15 +149,12 @@ function gameTimer(reset) {
 //Check Game Status 
 function gameStatus() {
     var status = setInterval(function(){
-        setTimeout(function(){
-            if (statusTime === '0' && userInput.val() !== displayChoice.html()) {
-                clearInterval(status);
-                setTimeout(function () {
-                    endGame();
-                }, 100);
-            } 
-        }, 900)
-        
+        if (statusTime === '0' && userInput.val() !== displayChoice.html()) {
+            clearInterval(status);
+            setTimeout(function () {
+                endGame();
+            }, 100);
+        }
     }, 100);    
 }
 
@@ -198,13 +198,11 @@ function leaderboard() {
         inputUserScore.css('display', 'initial');
             
         addUser.on('click', function(){
-            var tableRowEmpty = `<tr id="highscoreRow">
-            <td>1</td>
+            var tableRowEmpty = `<td>1</td>
             <td>${username.val()}</td>
-            <td>${score}</td>
-            </tr>`;
-            $('#highscoreRow').remove();
-            $('.leaderboard > table').append(tableRowEmpty);
+            <td>${score}</td>`;
+            $('.table-content').empty();
+            $('.table-content').append(tableRowEmpty);
             saveUser(username.val(), false, getDiffBoard);
             inputUserScore.css('display', 'none');
         });
@@ -215,41 +213,37 @@ function leaderboard() {
 
             //Is leaderboard, overwrite and save
 
-            var newHighscore = `<h4 id="alert"><span class="popper-emoji">&#x1F389</span> New highscore! <span class="popper-emoji">&#x1F389</span></h4>`;
-            $('#alert').remove();
-            $('.gameover-alert').append(newHighscore);
+            var newHighscore = `<h4><span class="popper-emoji">&#x1F389</span> New highscore! <span class="popper-emoji">&#x1F389</span></h4>`;
+            $('#score-alert').empty();
+            $('#score-alert').append(userScoreIsLess);
 
             inputUserScore.css('display', 'initial');
 
-            var tableRow = `<tr id="highscoreRow">
-            <td>1</td>
+            var tableRow = `<td>1</td>
             <td>${leaderboard[0].name}</td>
-            <td>${leaderboard[0].LScore}</td>
-            </tr>`;
-            $('.leaderboard > table').append(tableRow);
+            <td>${leaderboard[0].LScore}</td>`;
+            $('.table-content').empty();
+            $('.table-content').append(tableRow);
 
             addUser.on('click', function(){
-                $('#highscoreRow').remove();
-                var tableRowEmpty = `<tr>
-                <td>1</td>
+                var newTableScore = `<td>1</td>
                 <td>${username.val()}</td>
-                <td>${score}</td>
-                </tr>`;
-                $('.leaderboard > table').append(tableRowEmpty);
+                <td>${score}</td>`;
+                $('.table-content').empty();
+                $('.table-content').append(newTableScore);
                 saveUser(username.val(), true, getDiffBoard);
                 inputUserScore.css('display', 'none');
             });
+
         } else {
-            var userScoreIsLess = `<h4 id="alert">Oh no! <span>&#x2639</span> You didn't quite score enough to reach the leaderboard.</h4>`;
-            $('#alert').remove();
-            $('.gameover-alert').append(userScoreIsLess);
-            var tableRow = `<tr id="highscoreRow">
-            <td>1</td>
+            var userScoreIsLess = `<h4>Oh no! <span>&#x2639</span> You didn't quite score enough to reach the leaderboard.</h4>`;
+            $('#score-alert').empty();
+            $('#score-alert').append(userScoreIsLess);
+            var tableRow = `<td>1</td>
             <td>${leaderboard[0].name}</td>
-            <td>${leaderboard[0].LScore}</td>
-            </tr>`;
-            $('#highscoreRow').remove();
-            $('.leaderboard > table').append(tableRow);
+            <td>${leaderboard[0].LScore}</td>`;
+            $('.table-content').empty();
+            $('.table-content').append(tableRow);
         }
 
     }    
@@ -265,5 +259,5 @@ function saveUser(user, overwrite, getDiffBoard) {
         {name: user, LScore: score}
     ];
 
-    localStorage.setItem(getDiffBoard, JSON.stringify(newHighscore));  
+    localStorage.setItem(getDiffBoard, JSON.stringify(newHighscore));
 }

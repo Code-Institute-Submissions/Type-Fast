@@ -129,7 +129,7 @@ input[type=text] {
 
 /*Game Over*/
 
-.gameover-alert h1, h3, h4 {
+.gameover-alert h1, h3, div h4 {
     font-family: 'Oswald', sans-serif;
 }
 
