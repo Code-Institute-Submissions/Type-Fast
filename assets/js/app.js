@@ -58,14 +58,14 @@ $(document).ready(function(){
 //Get Words from API
 function obtainWords() {
 
-    const apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=50&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+    const apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=25&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
 
     //Filters out any word with accents and puts them into an array
     $.getJSON(apiLink, function(data){ 
         
         var regExp = new RegExp("^[a-z]*$");
 
-        for (i = 0, len = 50; i < len; i++){
+        for (i = 0, len = 25; i < len; i++){
             
             var word = data[i].word;
 
@@ -81,7 +81,7 @@ function obtainWords() {
 function showWord() {
 
     //random number generator
-    var i = Math.floor(Math.random()*50);
+    var i = Math.floor(Math.random()*(displayWords.length));
     
 
     //word to display
@@ -98,13 +98,18 @@ function game() {
     userInput.focus();
     showWord();
     gameTimer();
+
+    if (displayWords.length <= 15){
+        obtainWords();
+        console.logs("Was less than 15, added more.");
+    }
     
     userInput.on('input', function () {
         if (wordsMatch(userInput.val(), displayChoice.html())) {
             score++;
-            if (score % 50 === 0) {
-                displayWords = [];
+            if (score % 20 === 0) {
                 obtainWords();
+                console.log("Got to 20.");
             }
             gameTimer(true);
             userScore.html(score);
