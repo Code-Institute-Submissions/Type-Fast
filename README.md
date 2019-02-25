@@ -67,9 +67,6 @@ Below are the libraries and languages used in creating this project.
 - [Easytimer.js](http://albert-gonzalez.github.io/easytimer.js/)
     - Easytimer.js by Albert Gonzalez was used to acquire an accurate easy to use timer. 
 
-- [Browserify](http://browserify.org/)
-    - Used for writing Node.js to be deployed in browser. 
-
 ## Testing
 
 - [Jasmine Testing Results](https://msped.github.io/Interactive-Front-End-Project/assets/jasmine-testing/jasmine-testing.html) 
