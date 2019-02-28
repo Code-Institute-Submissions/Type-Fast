@@ -1,4 +1,4 @@
-# Type Fast - Interactive Front End Milestone Project
+# Type Fast 
 
 Type Fast is a Single-Page Application design to help users master typing at speed with pin point accuracy. The application offers easy to use functionally and offers a competition built in with the use of the browser LocalStorage.
 
