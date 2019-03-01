@@ -59,7 +59,9 @@ $(document).ready(function(){
 //Get Words from API
 function obtainWords() {
 
-    const apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=25&api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
+    const apiLink = "https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=false&max" + 
+    "CorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=40&" +
+    "api_key=8a8ea569a8c2098c500040f66e2044252dfdbb24b1b12e11c";
 
     //Filters out any word with accents from Wordnik API and puts them into an array
     $.getJSON(apiLink, function(data){ 
@@ -99,11 +101,6 @@ function game() {
     userInput.focus();
     showWord();
     gameTimer();
-
-    //If the amount of words in displayWords is less than 15, get some more.
-    if (displayWords.length <= 15){
-        obtainWords();
-    }
     
     //On typing into input box, check input against displayed word
     userInput.on('input', function () {
@@ -111,7 +108,7 @@ function game() {
             score++;
 
             //If user is close to amount of words in array, get some more for variety
-            if (score % 25 === 0) {
+            if (score % 50 === 0) {
                 obtainWords();
             }
             gameTimer(true);
@@ -262,7 +259,7 @@ function leaderboard() {
     }    
 }
 
-//Save user to LocalStorage ** updating all keys not just one for used difficulty
+//Save user to LocalStorage
 function saveUser(user, overwrite) {
 
     gameDiff = difficultyChanger.html();
