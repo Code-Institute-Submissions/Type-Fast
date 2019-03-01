@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!--Styles-->
-    <link rel="stylesheet" href="assets/styles/main.css" type="text/css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" 
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" 
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+            integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
+            crossorigin="anonymous">
+        <!--Google Font-->
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+        <!--Styles-->
+        <link rel="stylesheet" href="assets/styles/main.css" type="text/css">
 
-    <link rel="icon" href="assets/wireframes/exports/Artboard – 1@2x.png" type="image/x-icon" />
+        <link rel="icon" href="assets/wireframes/exports/Artboard – 1@2x.png" type="image/x-icon"/>
 
-    <title>Type Fast | Test your typing skills!</title>
-</head>
+        <title>Type Fast | Test your typing skills!</title>
+    </head>
     <body>
         <header>
             <h1 class="type-fast-header center-content">Type Fast <span class="cursor-line"></span></h1>
@@ -22,14 +30,17 @@
 
         <main class="container">
             <!--Game over Modal (By Bootstrap)-->
-            <div class="modal fade" id="game-over" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="game-over" tabindex="-1" role="dialog" 
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="center-content modal-body">
                             <div class="gameover-alert">
                                 <h1>Game Over!</h1>
                                 <br>
-                                <h3>You scored <span id="game-over-score"></span> on <span id="game-over-diff"></span> difficulty.</h3> 
+                                <h3>You scored <span id="game-over-score"></span> on 
+                                    <span id="game-over-diff"></span> difficulty.
+                                </h3> 
                                 <div id="score-alert">
 
                                 </div>
@@ -38,7 +49,8 @@
                             <!--Local Storage Leadbaord-->
                             <div class="local-leaderboad">
                                 <div class="input-user">
-                                    <input type="text" name="username" placeholder="Add a username!" id="username">
+                                    <input type="text" name="username" placeholder="Add a username!"
+                                    id="username">
                                     <a id="add-user">Add!</a>
                                 </div>
                                 <div class="leaderboard">
@@ -57,7 +69,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" 
+                                data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -70,10 +83,10 @@
                     <p>Don't let the timer run out!</p>
                 </div>
 
-                <!--Difficulty Change-->
+                <!--Difficulty Changer ** CHANGE FONTS **-->
                 <div class="center-content difficulty">
-                    <p>Difficulty: <span id="difficulty-changer">Easy</span></p>
-                    <p class="changer-info">You can change the difficulty by clicking the above.</p>
+                    <p class="difficulty-changer-main">Difficulty: <span id="difficulty-changer">Easy</span></p>
+                    <p class="difficulty-changer-info">You can change the difficulty by clicking the above.</p>
                 </div>
 
                 <!--Seconds and Score-->
@@ -88,7 +101,8 @@
 
                 <!--Input for user-->
                 <div class="user-input center-content">           
-                    <input type="text" id="user-input" autocapitalize="none" autocorrect="off" placeholder="Type in here!">
+                    <input type="text" id="user-input" autocapitalize="none" autocorrect="off" 
+                        placeholder="Type in here!">
                 </div>
 
                 <!--Buttons for user to manage game-->
@@ -103,9 +117,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!--Bootstrap JS-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+            crossorigin="anonymous">
+        </script>
         <!--Easytimer.js-->
-        <script src="assets/js/easytimer.js/dist/easytimer.min.js"></script>
+        <script src="assets/js/easytimer/dist/easytimer.min.js"></script>
         <!--My JS-->
         <script src="assets/js/app.js"></script>
     </body>
