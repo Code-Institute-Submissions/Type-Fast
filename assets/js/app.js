@@ -66,7 +66,7 @@ function obtainWords() {
         
         var regExp = new RegExp("^[a-z]*$");
 
-        for (i = 0, len = 25; i < len; i++){
+        for (i = 0; i < data.length; i++){
             
             var word = data[i].word;
 
@@ -86,11 +86,11 @@ function showWord() {
     
 
     //word to display
-    var arrayChoice = displayWords[i];
+    var wordChoice = displayWords[i];
     
 
     //display word
-    displayChoice.html(arrayChoice);
+    displayChoice.html(wordChoice);
         
 }
 
@@ -214,7 +214,7 @@ function leaderboard() {
             <td>${score}</td>`;
             $('.table-content').empty();
             $('.table-content').append(tableRowEmpty);
-            saveUser(username.val(), false, getDiffBoard);
+            saveUser(username.val(), false);
             inputUserScore.css('display', 'none');
         });
         
@@ -242,7 +242,7 @@ function leaderboard() {
                 <td>${score}</td>`;
                 $('.table-content').empty();
                 $('.table-content').append(newTableScore);
-                saveUser(username.val(), true, getDiffBoard);
+                saveUser(username.val(), true);
                 inputUserScore.css('display', 'none');
             });
 
@@ -262,10 +262,13 @@ function leaderboard() {
     }    
 }
 
-//Save user to LocalStorage
-function saveUser(user, overwrite, getDiffBoard) {
+//Save user to LocalStorage ** updating all keys not just one for used difficulty
+function saveUser(user, overwrite) {
+
+    gameDiff = difficultyChanger.html();
+
     if (overwrite) {
-        localStorage.removeItem(getDiffBoard);
+        localStorage.removeItem(gameDiff);
     } 
 
     var newHighscore = [
@@ -274,5 +277,5 @@ function saveUser(user, overwrite, getDiffBoard) {
 
 
     //Save to storage with difficulty as the Key
-    localStorage.setItem(getDiffBoard, JSON.stringify(newHighscore));
+    localStorage.setItem(gameDiff, JSON.stringify(newHighscore));
 }
