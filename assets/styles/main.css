@@ -18,7 +18,6 @@
     src: url(../fonts/Oswald-Regular.ttf);
 }
 
-
 /*Presets*/
 
 .inline-block {
@@ -64,8 +63,16 @@
     cursor: pointer;
 }
 
-.difficulty p, .difficulty p span {
-    font-size: 15pt; 
+.difficulty-changer-main {
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 16pt;
+    letter-spacing: -1px; 
+}
+
+.difficulty-changer-info {
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 12pt; 
+    letter-spacing: -2px;
 }
 
 .timer {
@@ -228,8 +235,16 @@ body {
         font-size: 15pt;
     }
 
-    .difficulty p, .difficulty p span {
-        font-size: 16pt; 
+    .difficulty-changer-main {
+        font-family: 'Ubuntu Mono', monospace;
+        font-size: 16pt;
+        letter-spacing: -1px; 
+    }
+    
+    .difficulty-changer-info {
+        font-family: 'Ubuntu Mono', monospace;
+        font-size: 12pt; 
+        letter-spacing: -2px;
     }
 
     .timer p, .timer p span, #word-display {
