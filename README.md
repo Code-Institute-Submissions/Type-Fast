@@ -2,7 +2,7 @@
 
 Type Fast is a Single-Page Application design to help users master typing at speed with pin point accuracy. The application offers easy to use functionally and offers a competition built in with the use of the browser LocalStorage.
 
-Type fast is deployed using GitHub pages, you can view it [here](https://msped.github.io/Interactive-Front-End-Project/).
+Type fast is deployed using GitHub pages, you can view it [here](https://msped.github.io/Type-Fast/).
 
 ## UX
 
@@ -20,7 +20,7 @@ Type fast is deployed using GitHub pages, you can view it [here](https://msped.g
 
 Initial Wireframes for the site:
 
-[Desktop](https://github.com/msped/Interactive-Front-End-Project/blob/master/assets/wireframes/exports/Web%201920%20%E2%80%93%201.png)  |  [Mobile](https://github.com/msped/Interactive-Front-End-Project/blob/master/assets/wireframes/exports/iPhone%206-7-8%20Plus%20%E2%80%93%201.png)
+[Desktop](https://github.com/msped/Type-Fast/blob/master/assets/wireframes/exports/Web%201920%20%E2%80%93%201.png)  |  [Mobile](https://github.com/msped/Type-Fast/blob/master/assets/wireframes/exports/iPhone%206-7-8%20Plus%20%E2%80%93%201.png)
 
 ## Features
 
@@ -69,7 +69,7 @@ Below are the libraries and languages used in creating this project.
 
 ## Testing
 
-- [Jasmine Testing Results](https://msped.github.io/Interactive-Front-End-Project/assets/jasmine-testing/jasmine-testing.html) 
+- [Jasmine Testing Results](https://msped.github.io/Type-Fast/assets/jasmine-testing/jasmine-testing.html) 
     - In the Jasmine testing I tested the wordsMatch() function numerous times. I conducted 3 tests on the function, each test showing the True and False outcomes for the three tests.
         
         1.  The first test is to make sure that the basic principles of the function works. I tested with non-capitalised words, hero & villian, to test that the function will `return false`.
@@ -112,7 +112,7 @@ One bug found during testing was that on Apple Devices the keyboard autocapitial
 
 ## Deployment
 
-This single page application is deployed using GitHub pages [here](https://msped.github.io/Interactive-Front-End-Project/).
+This single page application is deployed using GitHub pages [here](https://msped.github.io/Type-Fast/).
 
 ## Credits
 
